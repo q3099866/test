@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电子琴</title>
+	<style type="text/css">
+		body{
+			background-image: url(20081226_1b67e3fe0f95ebbd0c11hoD3l69j7fJj.gif);
+		}
+		
+		.kongzhi ul{
+
+			width: 450px;
+			height: 215px;
+            list-style: none;
+            background-image: url(dianziianwg.jpg);
+			background-position: 40px 0px;
+            background-repeat: no-repeat;
+            background-size: 490px 215px;
+		}
+		.kongzhi ul li{
+			text-decoration: none;
+			float: left;
+			width: 48px;
+			height: 215px;
+			background-color: transparent;
+			border-left: 1px solid black;
+			cursor: pointer;
+		}
+	</style>
+	<script src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+
+		$(function(){
+			//var audioEle = $("#audio5")[0];
+			$(".kongzhi li").click(function(){	
+				$(this).css('backgroundColor','rgba(0, 0, 0, 0.5)');
+				$(this).siblings().css('backgroundColor','transparent');
+				//var index=$(this).index();
+				
+				var index = $(this).prevAll().length+1;//当前li索引值加1
+				console.log(index);
+				var audioEle = $("#audio"+index+"")[0];//播放第index个audio
+				//console.log(audioEle);
+                //var index1="电子琴D"+index+".mp3";
+				//$("#d1").attr('src', "电子琴D"+index+".mp3");
+				audioEle.load();//防止双点 要先清除播放 不清除会继续半路播放
+				audioEle.play();	
+			});
+
+			
+		})
+	</script>
+</head>
+<body>
+	
+	<div class="kongzhi">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div>
+	  <audio id="audio1">
+			<source src="white1.ogg" id="d1"></source>
+	  </audio>
+	  <audio id="audio2">
+			<source src="white2.ogg" id="d2"></source>		
+	  </audio>
+	 	<audio id="audio3">
+			<source src="white3.ogg" id="d3"></source>
+	  </audio>
+	  <audio id="audio4">
+			<source src="white4.ogg" id="d4"></source>	
+	  </audio>
+	  <audio id="audio5">
+			<source src="white5.ogg" id="d5"></source>	
+	  </audio>
+  	<audio id="audio6">
+			<source src="white6.ogg" id="d6"></source>
+	  </audio>
+	  <audio id="audio7">
+			<source src="white7.ogg" id="d7"></source>	
+	  </audio>
+	  <audio id="audio8">
+			<source src="white1.ogg" id="d8"></source>	
+	  </audio>
+	</div>
+</body>
+</html>
+
